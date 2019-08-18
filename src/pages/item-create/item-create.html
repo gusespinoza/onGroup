@@ -1,0 +1,86 @@
+<ion-content class="transparent">
+  <form *ngIf="form" [formGroup]="form" (ngSubmit)="crearActividad()">
+    <ion-card class="bordes">
+      <div>
+        <ion-list no-lines >
+          <ion-item text-center>
+            <ion-label floating><h1 class="text-baloo">NombreActividad</h1></ion-label>
+            <ion-input type="text" formControlName="name" text-center class="text-bigsize" maxlength="12"></ion-input>
+          </ion-item>
+        </ion-list>
+        <div>
+          <input type="file" #fileInput style="visibility: hidden; height: 0px" name="files[]" (change)="processWebImage($event)" />
+          <div class="profile-image-wrapper" (click)="getPicture()">
+            <div class="profile-image-placeholder" *ngIf="!this.form.controls.profilePic.value">
+              <ion-icon name="image" small></ion-icon>
+            </div>
+            <div class="profile-image" [style.backgroundImage]="getProfileImageStyle()" *ngIf="this.form.controls.profilePic.value">
+            </div>
+          </div>
+
+          <ion-item class="foo01">
+
+            <ion-thumbnail item-start>
+              <img class="foo02" [src]="icoSelec" [style.display]="existeIcono">
+            </ion-thumbnail>
+
+          </ion-item>
+        </div>
+      </div>
+
+      <ion-card-content >
+        
+        <ion-list no-lines>
+          <ion-item>
+            <ion-label><ion-icon name="pin" small></ion-icon> Pin de la actividad:</ion-label>
+            <ion-select formControlName="tipo_actividad" multiple="false" cancelText="volver" okText="listo!" 
+              (ionChange)="mostrarIconos()" interface="popover">
+              <ion-option value="comida" >comida</ion-option>
+              <ion-option value="deporte">deporte</ion-option>
+              <ion-option value="animales">animales</ion-option>
+            </ion-select>
+          </ion-item>
+          <hr>
+          <ion-item>
+            <ion-label floating>¿Qué se hace?</ion-label>
+            <ion-input type="text" formControlName="about" maxlength="20"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>día</ion-label>
+            <ion-datetime displayFormat="DD-MM-YYYY" formControlName="dia" max="2020-12-31" min="2017"></ion-datetime>
+          </ion-item>
+          <ion-item>
+            <ion-label>a las</ion-label>
+            <ion-datetime displayFormat="HH:mm" pickerFormat="HH mm" formControlName="hora" ></ion-datetime>
+          </ion-item>
+          <ion-item>
+            <ion-label>Para?    <ion-icon [name]="icoPrivacidad" small></ion-icon></ion-label>
+            <ion-select formControlName="privacidad" multiple="false" cancelText="volver" okText="listo!"
+            (ionChange)="muestraIcoPrivacidad()" interface="popover" class="ancho">
+              <ion-option value="todos" selected="true">abierta, para todos</ion-option>
+              <ion-option value="privada" >cerrada, para el grupo</ion-option>
+              <ion-option value="necesarios">los necesarios</ion-option>
+              <ion-option value="necesarios_cs">los necesarios, con solicitud</ion-option>
+            </ion-select>
+          </ion-item>
+        </ion-list>
+        <hr>
+        <ion-buttons end>
+          <button ion-button (click)="cerrarModal()" color="assertive" small round>
+                volver!
+          </button>
+          <button ion-button icon-only (click)="done()" small round
+            [disabled]="!isReadyToSave" color="balanced">
+            <ion-icon name="checkmark" ></ion-icon>
+          </button>
+        </ion-buttons>
+
+        
+      </ion-card-content>
+    </ion-card>
+    
+    
+
+  </form>
+
+</ion-content>

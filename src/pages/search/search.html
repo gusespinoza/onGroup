@@ -1,0 +1,64 @@
+
+<ion-content >
+  <div text-center>
+    <br>
+    <button ion-button icon-only round
+          *ngIf="!mapa"
+          (click)="displaySearch='block';displayMap='none';mapa=true;">
+          <ion-icon name="search"></ion-icon>
+    </button>
+    <button ion-button icon-only round
+        color="balanced"
+        *ngIf="mapa"
+        (click)="displaySearch='none';displayMap='block';mapa=false;">
+        <ion-icon name="map"></ion-icon>
+    </button>
+    <button ion-button icon-only round color="energized"
+      (click)="crearActividad()">
+      <ion-icon name="bulb" class="color-blanco"></ion-icon>
+    </button>
+    <button ion-button icon-only round color="calm"
+      (click)="refrescar()">
+      <ion-icon name="refresh" ></ion-icon>
+    </button>
+  </div>
+  <hr>
+  <ion-searchbar [(ngModel)]="searchTerm" (ionInput)="setFilteredItems()"
+    [style.display]="displaySearch" placeholder="{{ 'SEARCH_PLACEHOLDER' | translate }}"></ion-searchbar>
+
+  <ion-list [style.display]="displaySearch">
+      <button ion-item (click)="detalleActividad(actividad, i)" *ngFor="let actividad of markers; let i = index">
+        <ion-thumbnail item-start>
+          <img class="foo04" [src]="actividad.icon">
+        </ion-thumbnail>
+        <h1>{{actividad.nombre}}</h1>
+        <p>{{actividad.detalle}}</p>
+        <ion-note item-end text-center>
+          <p>{{actividad.dias_restantes}}</p>
+          <ion-icon [name]="actividad.privacidad" ></ion-icon>
+        </ion-note>
+      </button>
+
+  </ion-list>
+
+
+  <!--<div #condicionmapa id="condicionmapa" [style.display]="displayMap">
+    <div #map id="map" ></div>
+    <ion-label text-center text-uppercase text-smallest>actividades cercanas</ion-label>
+  </div>-->
+  <agm-map [latitude]="convertStringToNumber(ubicacion_actual.lat)" [longitude]="convertStringToNumber(ubicacion_actual.lng)" 
+        [zoom]="zoom" [style.display]="displayMap" [zoomControl]="true" [streetViewControl]="false"
+        (mapClick)="obtienePosicion($event)">
+
+    <agm-marker
+      *ngFor="let m of markers; let i = index"
+      (markerClick)="detalleActividad(m, i)"
+      [latitude]="convertStringToNumber(m.lat)"
+      [longitude]="convertStringToNumber(m.lng)"
+      [iconUrl]="m.icon"
+    >
+    
+    </agm-marker>
+  </agm-map>
+
+</ion-content>

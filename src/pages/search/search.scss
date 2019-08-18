@@ -1,0 +1,52 @@
+.ios, .md {
+
+    page-search {
+
+      .scroll {
+        height: 100%
+      }
+
+      #map {
+        border-radius: 25px !important;
+        width: 100%;
+        height: 100%;
+        margin: auto;
+        padding: 10px;
+      }
+
+      #condicionmapa {
+        border-radius: 25px !important;
+        width: 100%;
+        height: 100%;
+        margin: auto;
+        border: 1.5px solid energized;
+        padding: 10px;
+      }
+
+      #centrar {
+        margin: auto;
+        padding: 10px;
+      }
+
+      #bckgrnd-search{
+        background-color: lightorange;
+      }
+
+      agm-map {
+        height: 95%;
+      }
+
+      .foo04 {
+        margin: auto;
+        width: 15vw !important;
+        height: 17vw !important;
+        border: 0.5vw solid #fff;
+      }
+
+      .color-blanco {
+        color: white;
+      }
+
+    }
+
+}

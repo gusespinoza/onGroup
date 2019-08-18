@@ -1,0 +1,54 @@
+<!--detalle de la actividad seleccionada-->
+
+<ion-content class="transparent">
+
+<ion-card class="bordes">
+    <div>
+      <img src="assets/img/bosque_pintado.jpg" >
+      <ion-item class="foo01">
+        <!--<ion-avatar item-center>
+          <img class="foo02" src="assets/img/ian-avatar.png">
+        </ion-avatar>-->
+        <ion-thumbnail item-start>
+        	<img class="foo02" [src]="actividad.icon">
+        </ion-thumbnail>
+
+        <ion-avatar item-end>
+        	<img class="foo03" src="assets/img/ian-avatar.png">
+        </ion-avatar>
+      </ion-item>
+    </div>
+
+    <ion-card-content text-center>      
+      <ion-card-title class="text-baloo">
+      	{{actividad.nombre}} - 
+		    <ion-note item-end>
+          <ion-icon [name]="icoPrivacidad" ></ion-icon>
+      	</ion-note>
+      </ion-card-title>
+      <h2 class="text-smallsize">GrupoCreador</h2>
+      <h3 class="text-sans">{{actividad.dias_restantes}}</h3>
+      <hr>
+      <p class="text-sans">{{actividad.detalle}}</p>
+      <ion-list>
+		<ion-item text-center class="text-sans">
+		    <ion-buttons center>
+		      
+		      <button ion-button (click)="unirse()" color="balanced" small round [disabled]="botonUnion">
+		      	Me sumo!
+		      </button>
+		      <button ion-button (click)="detalle()" color="energized" small round [disabled]="botonInfo">
+		      	info
+		      </button>
+		      <button ion-button (click)="cerrarModal()" color="assertive" small round *ngIf="!botonUnion">
+		      	nah!
+		      </button>
+		      <button ion-button (click)="cerrarModal()" color="assertive" small round *ngIf="botonUnion">
+		      	volver!
+		      </button>
+		    </ion-buttons>
+	    </ion-item>
+	   </ion-list>
+    </ion-card-content>
+</ion-card>
+</ion-content>

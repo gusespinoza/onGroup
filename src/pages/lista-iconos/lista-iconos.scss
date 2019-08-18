@@ -1,0 +1,36 @@
+page-lista-iconos {
+
+	.transparent {
+    	background: transparent !important;
+    	height: 100% !important;
+    	border: 0.5vw solid energized;
+  	}
+
+  	.icon-card {
+  		border: 0.5vw solid #11C1F3;
+  	}
+
+  	.item-md ion-thumbnail ion-img, .item-md ion-thumbnail img {
+	    width: 60px;
+	    height: 70px;
+	}
+
+	.text-bigsize {
+		font-size: 250%;
+		color: #707c80;
+		font-family: 'Baloo Bhaijaan', cursive;
+	}
+
+	.text-sans {
+		font-family: 'Open Sans', sans-serif;
+		text-align: center;
+	}
+
+	.foo04 {
+        margin: auto;
+        width: 13vw !important;
+        height: 15vw !important;
+        border: 0.5vw solid #fff;
+    }
+
+}

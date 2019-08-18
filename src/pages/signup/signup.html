@@ -1,0 +1,56 @@
+<ion-header>
+
+  <!-- <ion-navbar>
+    <ion-title>{{ 'SIGNUP_TITLE' | translate }}</ion-title>
+  </ion-navbar> -->
+
+</ion-header>
+
+
+<ion-content>
+  <form (submit)="doSignup()">
+    <!-- <ion-list>
+
+      <ion-item>
+        <ion-label fixed>{{ 'EMAIL' | translate }}</ion-label>
+        <ion-input type="email" [(ngModel)]="account.email" name="email"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label fixed>{{ 'PASSWORD' | translate }}</ion-label>
+        <ion-input type="password" [(ngModel)]="account.password" name="password"></ion-input>
+      </ion-item>
+
+      <div padding>
+        <button ion-button color="orange" block>{{ 'SIGNUP_BUTTON' | translate }}</button>
+      </div>
+
+    </ion-list> -->
+    <ion-card>
+
+
+      <ion-card-content>
+
+        <ion-list no-lines>
+
+          <ion-item>
+            <ion-label floating>email</ion-label>
+            <ion-input type="email" [(ngModel)]="account.email" (change)="emailChanged()" name="email"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label floating>password</ion-label>
+            <ion-input type="password" [(ngModel)]="account.password" name="password"></ion-input>
+          </ion-item>
+
+          <div padding>
+            <button ion-button color="energized" block>{{ 'SIGNUP_BUTTON' | translate }}</button>
+          </div>
+
+        </ion-list>
+
+      </ion-card-content>
+
+    </ion-card>
+  </form>
+</ion-content>
